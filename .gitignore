@@ -1,0 +1,5 @@
+.env
+*.tfvars
+__pycache__/
+evals/results/
+modules/*/evals/results/

@@ -1,0 +1,31 @@
+# Invariants: rules the build must keep, independent of how it is built.
+#
+# Fields
+#   decisions[]   id (ADR id), title, status (Proposed | Accepted | Not written), as_of
+#   invariants[]  id, adr, standing (normative only when its ADR is Accepted;
+#                 otherwise candidate: reported, never held to `expected`),
+#                 rule (no module or function names), expected
+#                 (ENFORCED | PARTIAL | MISSING), probes[]
+#   probes[]      id, what, kind (static | unit | runtime), target (today's
+#                 implementation; only here), must_not_regress (an existing
+#                 hard control: fails CI whatever the rule's standing)
+schema: 1
+
+decisions: []
+#  - id: ADR-001
+#    title: Example
+#    status: Proposed
+#    as_of: YYYY-MM-DD
+
+invariants: []
+#  - id: INV-01
+#    adr: ADR-001
+#    standing: candidate
+#    rule: Every factual claim in an output carries a source id or a status label.
+#    expected: PARTIAL
+#    probes:
+#      - id: P-01a
+#        what: ledger schema refuses a FACT claim with no source
+#        kind: unit
+#        target: tests/test_ledger.py
+#        must_not_regress: true

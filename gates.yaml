@@ -1,0 +1,45 @@
+# Gate sign-offs. The owner signs each gate, in order, by filling `signed_by`,
+# `signed_on` (YYYY-MM-DD) and `check`: the specific thing they checked, in at
+# least 12 characters ("looked at it" is not a check). A verbal "confirmed" is
+# not a sign-off. No script, CI run or merge signs a gate.
+#
+# scripts/check_gates.py fails when:
+#   - a build path holds anything besides README.md while G0-G2 are unsigned;
+#   - a gate is signed while an earlier one is not;
+#   - G0 is signed but PROBLEM.md does not say "Status: CONFIRMED";
+#   - G2 is signed with no eval case under evals/.
+schema: 1
+
+build_paths: [agents, skills, schemas, src]
+
+gates:
+  - id: G0
+    name: Problem confirmed
+    needs: PROBLEM.md complete and marked CONFIRMED
+    signed_by: ""
+    signed_on: ""
+    check: ""
+  - id: G1
+    name: Boundaries accepted
+    needs: architecture/system-of-record.yaml filled; what the build never writes to; ADR-001 Accepted
+    signed_by: ""
+    signed_on: ""
+    check: ""
+  - id: G2
+    name: Acceptance defined
+    needs: at least one eval case per success measure in PROBLEM.md
+    signed_by: ""
+    signed_on: ""
+    check: ""
+  - id: G3
+    name: Build reviewed
+    needs: build matches PROBLEM.md and the boundaries; evals run and results recorded
+    signed_by: ""
+    signed_on: ""
+    check: ""
+  - id: G4
+    name: Released
+    needs: evals pass at the threshold agreed in PROBLEM.md; release notes written
+    signed_by: ""
+    signed_on: ""
+    check: ""

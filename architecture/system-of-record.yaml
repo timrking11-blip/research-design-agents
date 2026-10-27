@@ -1,0 +1,27 @@
+# System-of-record matrix: the one ownership definition for this build.
+#
+# One write authority (`store`) per object, in three tiers never mixed:
+#   current          observed today, with evidence
+#   accepted_target  accepted by the owner as the target, not yet true
+#   proposed         in a Proposed ADR; no write authority
+# Changing `current` or `accepted_target` needs an Accepted ADR.
+# Questions the evidence cannot settle are gaps, not guesses.
+schema: 1
+as_of: ""
+
+# Systems of record this build must never write to (G1). Name each one and why.
+never_writes: []
+#  - store: example-crm
+#    why: owned by another system; this build hands it ledger files instead
+
+current: []
+#  - object: example
+#    store: example-store
+#    location: where it lives
+#    writers:
+#      - {writer: who, fields: [which], note: limits}
+#    evidence: [path/or/url]
+
+accepted_target: []
+
+proposed: []
