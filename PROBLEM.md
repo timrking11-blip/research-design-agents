@@ -56,6 +56,28 @@ the next step.
 | D4 | Intelligence layer | A future, optional export of ledger files is allowed; nothing is committed now, and there are no automatic writes downstream | Keeps research evidence independent of downstream systems; any hand-off is decided under ADR-012 in Claude-Artifacts |
 | D5 | Advisory module | Keep `modules/advisory/`, isolated and optional. Advisory recommendations are labelled as interpretation, never as research findings | Stops recommendations being read as verified facts |
 
+### Owner's proposals, 1 Nov 2026 (provisional), reconciled with D1–D5
+
+The owner proposed five decisions under the same labels. Only two answer the
+question of the same number; the others are new decisions, recorded as O3–O5
+below so the labels do not collide.
+
+| File's question | Owner's proposal | Reconciliation |
+|---|---|---|
+| D1 Primary user | "SMI client advisory research as the initial use case, with a reusable architecture for broader applications" | Matches proposed D1 |
+| D2 Success thresholds | "Demonstrable improvement over plain Claude in research quality, traceability, and reproducibility" | Partly matches: puts the comparison with plain Claude at the centre, where proposed D2 made integrity primary. The thresholds table below combines both. **Needs the owner's choice** |
+| D3 Fieldwork | Not addressed | **Still open** (proposed: out of scope for v1) |
+| D4 Intelligence layer | Not addressed | **Still open** (proposed: optional future export, no automatic writes) |
+| D5 Advisory module | Not addressed | **Still open** (proposed: keep, isolated) |
+
+New decisions from the owner's proposals:
+
+| # | Decision | Fits with |
+|---|---|---|
+| O3 | Scope: evidence-based research, source evaluation, synthesis and decision support; no autonomous consequential decisions | Out of scope; "Decision served" |
+| O4 | Human approval at decision gates; agents cannot self-approve evidence or implementation phases | `GATES.md`; R11 |
+| O5 | Blind, paired comparison with the baseline on identical tasks, scored against a predefined rubric | S8, S9 |
+
 ## Users and affected people
 
 - Tim King (SMI), who runs the agents and signs off their output.
@@ -93,6 +115,21 @@ A zero-failure result shows only that failures are rare, not that they cannot
 happen: with 0 failures in N runs, the 95% upper bound on the failure rate is
 about 3/N (the "rule of three"). The suite should be sized so that bound is
 acceptable to the owner (for example, N = 60 runs gives about 5%).
+
+### Owner's provisional thresholds, 1 Nov 2026
+
+| Metric | Owner's threshold | Maps to | Note |
+|---|---|---|---|
+| Scoring scale | 0–5 per dimension | S9 | The rubric's dimensions are not named yet. **Open** |
+| Mean improvement | ≥ +0.50 points over baseline, on the 0–5 scale | S9 | Not comparable with the prior +0.63, which was a 0–1 pass-rate difference |
+| Evaluation tasks | 10 distinct representative tasks | S7, G2 cases | Whether the adversarial cases planned for G2 count among the 10 is **open** |
+| Runs per task | 3 per system | S1 | |
+| Total outputs | 60: 30 agent, 30 baseline | S1 | Zero failures in 30 agent runs bounds the failure rate at about 10% (3/30), not 5% |
+| Critical fabricated citations | 0 | S1 | |
+| Source traceability | 100% | S2 | |
+| Reproducibility | ≥ 90% successful replay | S6 | "Successful replay" needs a definition (same verdict on re-run, or re-runnable from the record). **Open** |
+| Human gate compliance | 100% | O4 | |
+| Reporting | Paired comparison; task-level variance reported; no selective exclusion of failed runs | S8, S9 | |
 
 ## Acceptance matrix (research integrity)
 
@@ -157,15 +194,19 @@ implemented at G3. "Deterministic" means code can check it on the ledger file;
 
 All block G0:
 
-1. Approve, change or reject D1–D5.
-2. Approve or change the thresholds in S1–S9, and the suite size N for S1.
-   The owner's provisional target for S1 and S9 is recorded above; the
-   scoring scale and N are still open.
-3. Is R11 (a separate verification step) required for v1, or a G3 stretch?
+1. D2: integrity primary with the Claude comparison secondary, or the
+   comparison central?
+2. D3 fieldwork, D4 intelligence layer, D5 advisory module: approve, change
+   or reject the proposed answers.
+3. Name the rubric's dimensions for the 0–5 scale.
+4. Do the 10 tasks include the adversarial cases, or come on top of them?
+5. Define "successful replay" for the 90% reproducibility threshold.
+6. Is 30 agent runs enough for S1, given the ~10% bound, or should N grow?
+7. Is R11 (a separate verification step) required for v1? O4 suggests yes.
 
 ## Changes
 
 | Version | Date | What changed | Why |
 |---|---|---|---|
 | 1 | 2026-10-27 | Drafted | Repository created; G0 started |
-| 2 (draft) | 2026-11-01 | Owner's provisional S1/S9 target recorded; G0 on HOLD by the owner. Earlier the same day: proposed D1–D5; evidence-integrity measures made primary (S1–S6), Claude comparison secondary (S9); acceptance matrix R1–R12; prior-work gaps listed | Owner-supplied audit of 1 Nov 2026 |
+| 2 (draft) | 2026-11-01 | Owner's provisional decisions and thresholds recorded and reconciled with D1–D5; open questions updated. Earlier: owner's provisional S1/S9 target recorded; G0 on HOLD by the owner. Earlier the same day: proposed D1–D5; evidence-integrity measures made primary (S1–S6), Claude comparison secondary (S9); acceptance matrix R1–R12; prior-work gaps listed | Owner-supplied audit of 1 Nov 2026 |
