@@ -81,7 +81,13 @@ where a FACT claim fails the deterministic ledger checks (R1–R4 below).
 | S6 | Every eval run is reproducible (R9) | Each run records agent version, model and settings, inputs, results and cost | Primary |
 | S7 | Works across categories | Cases cover at least 4 unrelated markets | Secondary |
 | S8 | Independent grading | Graders are deterministic where possible; LLM-judged cases are spot-checked by the owner or a second judge model | Secondary |
-| S9 | Better than plain Claude Code | Mean Δ ≥ +0.50 over paired runs | Secondary |
+| S9 | Better than plain Claude Code | Mean Δ ≥ +0.50 over paired runs, scored against a rubric fixed before the runs | Secondary |
+
+**Owner note, 1 Nov 2026 (provisional):** target an average improvement of at
+least +0.50 over plain Claude, scored with a predefined rubric, with no
+critical evidence-integrity failures (S9 with S1). It stays provisional until
+the scoring scale and the sample size N are confirmed. This note does not
+confirm this file or sign G0.
 
 A zero-failure result shows only that failures are rare, not that they cannot
 happen: with 0 failures in N runs, the 95% upper bound on the failure rate is
@@ -153,6 +159,8 @@ All block G0:
 
 1. Approve, change or reject D1–D5.
 2. Approve or change the thresholds in S1–S9, and the suite size N for S1.
+   The owner's provisional target for S1 and S9 is recorded above; the
+   scoring scale and N are still open.
 3. Is R11 (a separate verification step) required for v1, or a G3 stretch?
 
 ## Changes
@@ -160,4 +168,4 @@ All block G0:
 | Version | Date | What changed | Why |
 |---|---|---|---|
 | 1 | 2026-10-27 | Drafted | Repository created; G0 started |
-| 2 (draft) | 2026-11-01 | Proposed D1–D5; evidence-integrity measures made primary (S1–S6), Claude comparison secondary (S9); acceptance matrix R1–R12; prior-work gaps listed | Owner-supplied audit of 1 Nov 2026 |
+| 2 (draft) | 2026-11-01 | Owner's provisional S1/S9 target recorded; G0 on HOLD by the owner. Earlier the same day: proposed D1–D5; evidence-integrity measures made primary (S1–S6), Claude comparison secondary (S9); acceptance matrix R1–R12; prior-work gaps listed | Owner-supplied audit of 1 Nov 2026 |
