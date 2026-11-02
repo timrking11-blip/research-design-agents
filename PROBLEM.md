@@ -1,9 +1,9 @@
 # PROBLEM
 
-Status: DRAFT
+Status: DRAFT — G0 PROPOSALS PENDING OWNER APPROVAL
 Confirmed on: 
 Confirmed by: 
-Version: 1
+Version: 1 (unconfirmed; proposed amendments below)
 
 This file is the specification. Nothing is built until it is CONFIRMED and G0
 is signed in `gates.yaml`. A change after confirmation is a new version with a
@@ -97,8 +97,43 @@ All block G0:
    here.
 5. Keep `modules/advisory/` in this repo, or delete it?
 
+
+## Proposed G0 decisions — NOT APPROVED (2026-11-02)
+
+These are recommendations for owner review, **not** answers, confirmation, or a sign-off. The five open questions above remain blocking.
+
+| Question | Proposed disposition | Approval |
+|---|---|---|
+| D1 Primary user | SMI client advisory first, with reusable cross-industry research architecture | PENDING OWNER |
+| D2 Thresholds | Keep S1 mean improvement >= +0.50 as secondary; add deterministic evidence-integrity checks and independent semantic grading. The final sample size and zero-critical-failure threshold require owner approval and a cost estimate. | PENDING OWNER |
+| D3 Fieldwork | Design instruments and methods only; exclude recruitment, survey distribution, and interviewing in v1 | PENDING OWNER |
+| D4 Intelligence layer | Permit future optional, reviewed file-based handoff; no integration or downstream writes without a separately accepted ADR | PENDING OWNER |
+| D5 Advisory module | Retain as isolated optional policy guidance; do not promote recommendations to verified facts | PENDING OWNER |
+
+### Proposed additional success measures (not yet normative)
+
+| ID | Measure | Proposed acceptance / evaluation method |
+|---|---|---|
+| S8 | Referential integrity | 100% of evaluated ledgers have unique source/claim IDs and all cited source IDs resolve; deterministic validation |
+| S9 | Reviewed evidence | 0 ready-to-use FACT claims supported solely by unreviewed snippets; deterministic status checks plus semantic review |
+| S10 | Evidence fidelity | No critical unsupported, exaggerated, or scope-mismatched factual assertions in independently adjudicated release evals; sample size and graders to be approved at G2 |
+| S11 | Conflicting evidence | All seeded material conflicts are disclosed or the output is held for review; adversarial evaluation |
+| S12 | Reproducibility | 100% of evaluation runs record input fixture, agent/prompt version, model identifier/settings where available, grader version, result and cost |
+| S13 | Advisory separation | 100% of advisory eval outputs distinguish recommendations and assumptions from verified evidence |
+
+A zero-critical-failure sample is a release gate, **not** a guarantee of zero real-world error. Do not silently convert the proposed measures to signed acceptance criteria.
+
+### Proposed evaluation protocol (not authorized to execute)
+
+Preserve the four prior-work cases; add adversarial cases for fabricated citations, duplicate or missing IDs, contradictory primary sources, stale figures, misleading precision, causal overreach, company/domain lookalikes, regulated topics, and assumption-to-fact promotion. Pair agent and baseline runs using comparable inputs, independent grading, and adjudication of critical failures. Specify a larger sample size and cost estimate for owner approval before any paid execution.
+
+### Explicit G0 review required
+
+The owner must personally review the business problem, both decisions served, all success measures and thresholds, all out-of-scope items, and the five proposed dispositions; then provide a genuine description of the check performed. Only a separate authorized change may mark this file CONFIRMED and sign G0 in gates.yaml.
+
 ## Changes
 
 | Version | Date | What changed | Why |
 |---|---|---|---|
 | 1 | 2026-10-27 | Drafted | Repository created; G0 started |
+| 1 draft amendment | 2026-11-02 | Added proposed decisions and acceptance criteria | Owner review only; no confirmation |
