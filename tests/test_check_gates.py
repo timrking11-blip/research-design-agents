@@ -1,3 +1,4 @@
+import re
 import shutil
 import sys
 import tempfile
@@ -36,7 +37,7 @@ class GateTests(unittest.TestCase):
 
     def confirm_problem(self):
         path = self.dir / "PROBLEM.md"
-        path.write_text(path.read_text().replace("Status: DRAFT", "Status: CONFIRMED"))
+        path.write_text(re.sub(r"^Status:.*$", "Status: CONFIRMED", path.read_text(), count=1, flags=re.MULTILINE))
 
     def add_eval(self):
         (self.dir / "evals" / "case-one").mkdir(parents=True)
